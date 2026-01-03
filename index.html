@@ -1,0 +1,80 @@
+<!-- 
+    Projek    : Aplikasi Tambah List Sederhana
+    Deskripsi : Aplikasi Kalkulator Sederhana yang terdiri dari 2 angka.
+    Pembuat   : Ahmad Nuzulur Rozaq | ( ANR_2006 )
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Tambah List Sederhana</title>
+</head>
+
+<body>
+    <header>
+        <h1>Tambah List Sederhana</h1>
+        <span>Aplikasi untuk menambahkan list benda apapun bebas yang sederhana.<br>
+            by : Ahmad Nuzulur Rozaq | ( ANR_2006 )
+        </span>
+    </header>
+    <hr>
+    <main>
+        <fieldset>
+            <div>
+                <h3>Deskripsi Singkat</h3>
+                <p>Aplikasi untuk menambahkan list benda apapun bebas yang sederhana.<br>
+                    Wajib diisi dan tidak boleh diisi dengan spasi.
+                </p>
+                <hr>
+            </div>
+            <div>
+                <h3>Tambah List</h3>
+                <span>Masukkan teks apa saja di kotak input dibawah ini.</span>
+            </div>
+            <div>
+                <input type="text" name="inputList" id="inputList">
+                <button id="tambahList">TAMBAH</button>
+                <button id="resetList">RESET</button>
+            </div>
+            <div>
+                <ul id="list">
+
+                </ul>
+            </div>
+        </fieldset>
+    </main>
+</body>
+<script>
+    const inputList = document.getElementById("inputList");
+    const tambahList = document.getElementById("tambahList");
+    const resetList = document.getElementById("resetList");
+
+    function proses() {
+        const list = document.getElementById("list");
+        const inputValue = inputList.value.trim();
+        const li = document.createElement("li");
+        if (inputValue == "") {
+            alert("Inputan wajib diisi dan tidak boleh diisi dengan spasi !");
+            return;
+        }
+        list.append(li);
+        li.append(inputValue);
+        document.getElementById("inputList").value = "";
+    }
+    tambahList.addEventListener('click', proses);
+    
+    resetList.addEventListener('click', function () {
+        document.getElementById("list").innerHTML = "";
+        document.getElementById("inputList").value = "";
+    });
+
+    inputList.addEventListener('keydown', function (event) {
+        if (event.key == "Enter") {
+            proses();
+        }
+    });
+</script>
+
+</html>
